@@ -1,4 +1,4 @@
-package com.bartoszgajda.twitchwebhookmanager.controllers;
+package com.bartoszgajda.springkafka.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

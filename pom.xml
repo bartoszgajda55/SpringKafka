@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.bartoszgajda</groupId>
-	<artifactId>twitch-webhook-manager</artifactId>
+	<artifactId>spring-kafka</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>twitch-webhook-manager</name>
+	<name>spring-kafka</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
