@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:9092
+          transaction:
+            producer:
+              partition-count: 1
+      bindings:
+        rsvp-in:
+          destination: rsvp
+          contentType: application/json
+        rsvp-out:
+          destination: rsvp
+          contentType: application/json
