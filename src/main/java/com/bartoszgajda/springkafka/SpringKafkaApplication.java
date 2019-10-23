@@ -1,5 +1,6 @@
 package com.bartoszgajda.springkafka;
 
+import com.bartoszgajda.springkafka.service.WebsocketService;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,10 +17,10 @@ public class SpringKafkaApplication {
 	}
 
 	@Bean
-	public ApplicationRunner initializeConnection(CollectionSocketHandler collectionSocketHandler) {
+	public ApplicationRunner initializeConnection(WebsocketService websocketService) {
 		return args -> {
 			WebSocketClient socketClient = new StandardWebSocketClient();
-			socketClient.doHandshake(collectionSocketHandler, MEETUP_RSVP_ENDPOINT);
+			socketClient.doHandshake(websocketService, MEETUP_RSVP_ENDPOINT);
 		};
 	}
 }
