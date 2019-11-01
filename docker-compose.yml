@@ -2,20 +2,20 @@ version: "2"
 
 services:
   zookeeper:
-    image: "bitnami/zookeeper:3"
+    image: bitnami/zookeeper:latest
     ports:
-      - "2181:2181"
+      - 2181:2181
     volumes:
-      - "zookeeper_data:/bitnami"
+      - zookeeper_data:/bitnami
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
   kafka:
-    image: "bitnami/kafka:2"
+    image: bitnami/kafka:latest
     hostname: localhost
     ports:
-      - "9092:9092"
+      - 9092:9092
     volumes:
-      - "kafka_data:/bitnami"
+      - kafka_data:/bitnami
     environment:
       - KAFKA_ADVERTISED_PORT=9092
       - KAFKA_ADVERTISED_HOST_NAME=localhost
@@ -23,6 +23,24 @@ services:
       - ALLOW_PLAINTEXT_LISTENER=yes
     depends_on:
       - zookeeper
+  spark-master:
+    image: bitnami/spark:latest
+    container_name: spark-master
+    hostname: spark-master
+    environment:
+      - SPARK_MODE=master
+    ports:
+      - 7077:7077
+      - 8081:8080
+  spark-worker:
+    image: bitnami/spark:2
+    container_name: spark-worker
+    hostname: spark-worker
+    depends_on:
+      - spark-master
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark-master:7077
 
 volumes:
   zookeeper_data:

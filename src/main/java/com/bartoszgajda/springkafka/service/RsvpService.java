@@ -20,7 +20,7 @@ public class RsvpService {
   }
 
   public void sendRsvp(final String rsvp) {
-    logger.log(Level.INFO, "RSVP To Kafka:\n {0}", rsvp);
+//    logger.log(Level.INFO, "RSVP To Kafka:\n {0}", rsvp);
     MessageChannel messageChannel = rsvpStreams.outboundRsvp();
     messageChannel.send(MessageBuilder.withPayload(rsvp).setHeader(MessageHeaders.CONTENT_TYPE, MimeTypeUtils.APPLICATION_JSON).build());
   }

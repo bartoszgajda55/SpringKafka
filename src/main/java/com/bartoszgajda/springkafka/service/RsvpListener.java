@@ -14,5 +14,6 @@ public class RsvpListener {
 
   @StreamListener(RsvpStreams.INPUT)
   public void handleRsvp(@Payload String rsvp) {
+    logger.log(Level.INFO, "RSVP From Kafka:\n {0}", rsvp);
   }
 }
